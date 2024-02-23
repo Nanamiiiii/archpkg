@@ -1,0 +1,19 @@
+# Maintainer: Akihiro Saiki <nanami at myuu.dev>
+# Maintainer: kusanaginoturugi <kusanaginoturugi at gmail dot com>
+pkgname=skk-emoji-jisyo
+pkgver=0.0.9
+pkgrel=1
+pkgdesc="Emoji Dictionaries for the SKK Japanese input method"
+arch=("any")
+url="https://github.com/uasi/skk-emoji-jisyo"
+license=("MIT")
+source=("https://raw.githubusercontent.com/uasi/skk-emoji-jisyo/master/README.md" "https://raw.githubusercontent.com/uasi/skk-emoji-jisyo/master/LICENSE" "https://raw.githubusercontent.com/uasi/skk-emoji-jisyo/master/SKK-JISYO.emoji.utf8")
+md5sums=('a15439b310c8a585b04fbede8d1a9c6f'
+         'b38ac3ba86b729f5feb72b371f99c981'
+         '5941e52102d5d48fdd99a04824f488db')
+
+package() {
+  install -D -m644 ${srcdir}/README.md "${pkgdir}/usr/share/${pkgname}/README.md"
+  install -D -m644 ${srcdir}/LICENSE   "${pkgdir}/usr/share/${pkgname}/LICENSE"
+  install -D -m644 ${srcdir}/SKK-JISYO.emoji.utf8 "${pkgdir}/usr/share/${pkgname}/SKK-JISYO.emoji.utf8"
+}
