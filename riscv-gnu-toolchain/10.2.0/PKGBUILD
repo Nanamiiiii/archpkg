@@ -1,0 +1,31 @@
+pkgname=riscv-gnu-toolchain-bin-10
+pkgver=2021.01.26
+_target=10.2.0
+_pkg_prefix=ubuntu-20.04-nightly
+pkgrel=1
+pkgdesc="GNU toolchain for RISC-V, including GCC. Precompiled riscv64-unknown-elf-gcc, riscv32-unknown-elf-gcc, riscv64-unknown-linux-gnu-gcc, and riscv32-unknown-linux-gnu-gcc."
+arch=('x86_64')
+url="https://github.com/riscv-collab/riscv-gnu-toolchain"
+license=('GPL2')
+depends=()
+optdepends=()
+makedepends=()
+options=(!strip)
+source=(
+  "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/${pkgver}/riscv32-elf-${_pkg_prefix}-${pkgver}-nightly.tar.gz"
+  "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/${pkgver}/riscv32-glibc-${_pkg_prefix}-${pkgver}-nightly.tar.gz"
+  "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/${pkgver}/riscv64-elf-${_pkg_prefix}-${pkgver}-nightly.tar.gz"
+  "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/${pkgver}/riscv64-glibc-${_pkg_prefix}-${pkgver}-nightly.tar.gz"
+)
+
+sha256sums=(
+  "2982d66798c8ce8031074420246a5f4368d3def20df51eef8d8b549e8ad45de1"
+  "ba349976762c195abd7bf7bc1651fe580bf83ac20062717e3e62f6c6684f353c"
+  "9c2e07e9888a1e9531d5c3a3a499afd357582caf1614c73ccbcc4082861cdc81"
+  "35dbeaca907ea154030ea478baacdb65576df6b5c532142ff1bd515cf40e3cf0"
+)
+
+package() {
+  install -dm755 "${pkgdir}"/opt/riscv-gnu-toolchain-"${_target}"
+  cp -pr "${srcdir}"/riscv/* "${pkgdir}"/opt/riscv-gnu-toolchain-"${_target}"
+}

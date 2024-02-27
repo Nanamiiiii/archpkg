@@ -1,0 +1,31 @@
+pkgname=riscv-gnu-toolchain-bin-13
+pkgver=2024.02.02
+_target=13.2.0
+_pkg_prefix=ubuntu-22.04-gcc-nightly
+pkgrel=1
+pkgdesc="GNU toolchain for RISC-V, including GCC. Precompiled riscv64-unknown-elf-gcc, riscv32-unknown-elf-gcc, riscv64-unknown-linux-gnu-gcc, and riscv32-unknown-linux-gnu-gcc."
+arch=('x86_64')
+url="https://github.com/riscv-collab/riscv-gnu-toolchain"
+license=('GPL2')
+depends=()
+optdepends=()
+makedepends=()
+options=(!strip)
+source=(
+  "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/${pkgver}/riscv32-elf-${_pkg_prefix}-${pkgver}-nightly.tar.gz"
+  "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/${pkgver}/riscv32-glibc-${_pkg_prefix}-${pkgver}-nightly.tar.gz"
+  "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/${pkgver}/riscv64-elf-${_pkg_prefix}-${pkgver}-nightly.tar.gz"
+  "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/${pkgver}/riscv64-glibc-${_pkg_prefix}-${pkgver}-nightly.tar.gz"
+)
+
+sha256sums=(
+  "563980581f4920a6ca1dfffee6d83bbf98958d3ad26607fe89169578aceda424"
+  "afd3a6b10079cc86110cfd373281b4e6445080d1ce3168872271e1761264fd0a"
+  "89ee0de3b39ca6922bb895914616c9d4380cbfd0f314612b8e65c4235121d8c7"
+  "89313959f1475d76f1dad35830cec5a3cb17b6706981eb6fda49e5babefef52c"
+)
+
+package() {
+  install -dm755 "${pkgdir}"/opt/riscv-gnu-toolchain-"${_target}"
+  cp -pr "${srcdir}"/riscv/* "${pkgdir}"/opt/riscv-gnu-toolchain-"${_target}"
+}
