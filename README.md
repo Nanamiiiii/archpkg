@@ -2,7 +2,13 @@
 Self-hosted package repository
 
 ## Packages
-- neovim-head
+| Package | Version |
+| :-- | :-- |
+| neovim-head | HEAD |
+| skk-jisyo-emoji | `0.0.9` |
+| riscv-gnu-toolchain-bin-13 | `2024.02.02` |
+| riscv-gnu-toolchain-bin-10 | `2021.01.26` |
+| riscv-musl-toolchain-bin-13 | `2024.02.02` |
 
 ## How to Use
 1. Add to `/etc/pacman.conf`
